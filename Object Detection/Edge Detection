@@ -1,0 +1,80 @@
+
+# # Canny Edge Detection
+# https://en.wikipedia.org/wiki/Canny_edge_detector
+
+# In[2]:
+
+
+import cv2
+import numpy as np
+import matplotlib.pyplot as plt
+get_ipython().run_line_magic('matplotlib', 'inline')
+
+
+# In[3]:
+
+
+img = cv2.imread('../DATA/dog-with-kid.jpg')
+
+
+# In[4]:
+
+
+plt.imshow(img)
+
+
+# In[16]:
+
+
+edges = cv2.Canny(image=img, threshold1=200, threshold2=127)
+
+
+# In[17]:
+
+
+plt.imshow(edges)
+
+
+# In[7]:
+
+
+edges = cv2.Canny(image=img, threshold1=0, threshold2=255)
+
+
+# In[8]:
+
+
+plt.imshow(edges)
+
+
+# # blur
+
+# In[9]:
+
+
+blurred_image = cv2.blur(img,ksize=(5,5))
+
+
+# In[11]:
+
+
+plt.imshow(blurred_image)
+
+
+# In[12]:
+
+
+edges = cv2.Canny(image=blurred_image, threshold1=0, threshold2=255)
+
+
+# In[13]:
+
+
+plt.imshow(edges)
+
+
+# In[ ]:
+
+
+
+
