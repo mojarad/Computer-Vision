@@ -1,0 +1,70 @@
+# # Colorspaces
+# 
+# Let's have a brief introduction into converting to different colorspaces! The video goes into more detail about colorspaces.
+# 
+# Quick Info Link: 
+# https://en.wikipedia.org/wiki/HSL_and_HSV
+# 
+
+# In[1]:
+
+
+import cv2
+import matplotlib.pyplot as plt
+import numpy as np
+get_ipython().run_line_magic('matplotlib', 'inline')
+
+
+# In[2]:
+
+
+img = cv2.imread('../DATA/sunset.png')
+
+
+# In[3]:
+
+
+plt.imshow(img)
+
+
+# ### Converting to Different Colorspaces
+
+# In[4]:
+
+
+img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+plt.imshow(img)
+
+
+# **Converting to HSV**
+# https://en.wikipedia.org/wiki/HSL_and_HSV
+
+# In[5]:
+
+
+img = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+plt.imshow(img)
+
+
+# In[6]:
+
+
+img = cv2.imread('../DATA/sunset.png')
+img = cv2.cvtColor(img, cv2.COLOR_BGR2HLS)
+plt.imshow(img)
+
+
+# That's it, great work!
+# 
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
