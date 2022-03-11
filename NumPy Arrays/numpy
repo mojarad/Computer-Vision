@@ -1,0 +1,165 @@
+# # Numpy 
+
+# In[1]:
+
+
+import numpy as np
+
+
+# ## Creating Arrays
+
+# In[2]:
+
+
+my_list = [0,1,2,3,4]
+
+
+# In[3]:
+
+
+arr = np.array(my_list)
+
+
+# In[4]:
+
+
+arr
+
+
+# In[5]:
+
+
+np.arange(0,10)
+
+
+# In[6]:
+
+
+np.arange(0,10,2)
+
+
+# In[7]:
+
+
+np.zeros((5,5))
+
+
+# In[8]:
+
+
+np.ones((2,4))
+
+
+# ## Operations
+
+# In[9]:
+
+
+arr = np.random.randint(0,100,10)
+
+
+# In[10]:
+
+
+arr
+
+
+# In[11]:
+
+
+arr.max()
+
+
+# In[12]:
+
+
+arr.min()
+
+
+# In[13]:
+
+
+arr.mean()
+
+
+# In[14]:
+
+
+arr.argmin()
+
+
+# In[15]:
+
+
+arr.argmax()
+
+
+# In[16]:
+
+
+arr.reshape(2,5)
+
+
+# ## Indexing
+
+# In[17]:
+
+
+# np.arange(0,100)
+
+
+# In[18]:
+
+
+mat = np.arange(0,100).reshape(10,10)
+
+
+# In[19]:
+
+
+mat
+
+
+# In[20]:
+
+
+mat[ 3:6 , 0:4 ]
+
+
+# In[21]:
+
+
+row = 0
+col = 1
+
+
+# In[22]:
+
+
+mat[row,col]
+
+
+# In[23]:
+
+
+# mat[ : , : ]
+
+
+# In[24]:
+
+
+# With Slices
+mat[:,col]
+
+
+# In[25]:
+
+
+mat[row,:]
+
+
+# In[26]:
+
+
+mat[0:3,0:3]
+
