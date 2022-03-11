@@ -1,0 +1,122 @@
+ 
+# ## Blending Images
+# 
+
+# In[2]:
+
+
+import cv2
+
+
+# In[3]:
+
+
+# Two images
+img1 = cv2.imread('../DATA/ny.png')
+img2 = cv2.imread('../DATA/nylogo.png')
+
+
+# In[4]:
+
+
+img1.shape
+
+
+# In[5]:
+
+
+img2.shape
+
+
+# In[6]:
+
+
+import matplotlib.pyplot as plt
+get_ipython().run_line_magic('matplotlib', 'inline')
+
+
+# In[7]:
+
+
+plt.imshow(img2)
+
+
+# In[8]:
+
+
+plt.imshow(img1)
+
+
+# Whoops! Let's remember to fix the RGB!
+
+# In[9]:
+
+
+img1 = cv2.cvtColor(img1, cv2.COLOR_BGR2RGB)
+img2 = cv2.cvtColor(img2, cv2.COLOR_BGR2RGB)
+
+
+# In[10]:
+
+
+plt.imshow(img1)
+
+
+# In[11]:
+
+
+plt.imshow(img2)
+
+
+# ### Resizing the Images
+
+# In[12]:
+
+
+img1 =cv2.resize(img1,(1200,1200))
+img2 =cv2.resize(img2,(1200,1200))
+
+
+# Let's practice resizing the image, since the DO NOT COPY image is actually quite large 1200 by 1200, and our puppy in backpack image is 1400 by 1000
+
+# In[13]:
+
+
+plt.imshow(img1)
+
+
+# In[14]:
+
+
+plt.imshow(img2)
+
+
+# ### Blending the Image
+# 
+# We will blend the values together with the formula:
+# 
+# $$  img1 * \alpha  + img2 * \beta  + \gamma $$
+
+# In[15]:
+
+
+img1.shape
+
+
+# In[16]:
+
+
+img2.shape
+
+
+# In[17]:
+
+
+blended = cv2.addWeighted(src1=img1,alpha=0.7,src2=img2,beta=0.3,gamma=0)
+
+
+# In[18]:
+
+
+plt.imshow(blended)
+
