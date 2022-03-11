@@ -1,0 +1,49 @@
+# # Histograms
+
+# In[6]:
+
+
+import cv2
+import numpy as np
+import matplotlib.pyplot as plt
+get_ipython().run_line_magic('matplotlib', 'inline')
+
+
+# ## Image Histograms with OpenCV
+
+# Recall that Matplotlib expects the images in a different RGB ordering vs BGR in OpenCV, so if we use OpenCV to calculate anything channel oriented, we'll want to make sure we keep the original RGB ordering, however if we ever want to display the image, then we'll need to convert to the RGB ordering that matplotlib wants.
+
+# In[7]:
+
+
+roadimage = cv2.imread('../DATA/road.jpg')
+show_roadimage = cv2.cvtColor(roadimage, cv2.COLOR_BGR2RGB)
+
+
+# In[8]:
+
+
+plt.imshow(show_roadimage)
+
+
+# In[9]:
+
+
+hist_values = cv2.calcHist([roadimage],channels=[0],mask=None,histSize=[256],ranges=[0,256])
+plt.plot(hist_values)
+
+
+# ## Plotting 3 Color Histograms
+
+# In[10]:
+
+
+img = roadimage
+color = ('b','g','r')
+for i,col in enumerate(color):
+    histr = cv2.calcHist([img],[i],None,[256],[0,256])
+    plt.plot(histr,color = col)
+    plt.xlim([0,256])
+plt.title('road Image')
+plt.show()
+
