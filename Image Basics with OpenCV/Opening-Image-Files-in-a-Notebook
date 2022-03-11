@@ -1,0 +1,179 @@
+# # Opening Image Files in a Notebook
+
+# In[1]:
+
+
+get_ipython().system('pip install opencv-python')
+
+
+# In[2]:
+
+
+import numpy as np
+import cv2
+import matplotlib.pyplot as plt
+get_ipython().run_line_magic('matplotlib', 'inline')
+
+
+# #### WARNING! Make sure to provide the correct path like we do in our notebooks! ALWAYS confirm that your file path is correct before posting a question on this.
+
+# In[3]:
+
+
+# WONT GIVE ERROR! GIVES NONE INSTEAD!!!
+img = cv2.imread("somepath/nopictureexist.jpg")
+
+
+# In[4]:
+
+
+print(img)
+
+
+# In[5]:
+
+
+img = cv2.imread('../DATA/ai.jpg')
+
+
+# In[6]:
+
+
+img
+
+
+# ------------
+
+# In[7]:
+
+
+img_bgr = cv2.imread('../DATA/ai.jpg')
+plt.imshow(img_bgr)
+
+
+# The image has been correctly loaded by openCV as a numpy array, but the color of each pixel has been sorted as BGR.
+# Matplotlib's plot expects an RGB image so, for a correct display of the image, it is necessary to swap those channels. 
+# This operation can be done either by using openCV conversion functions cv2.cvtColor() or by working directly with the numpy array.
+
+# In[8]:
+
+
+img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+plt.imshow(img_rgb)
+
+
+# In[9]:
+
+
+img_gray = cv2.imread('../DATA/ai.jpg',cv2.IMREAD_GRAYSCALE)
+plt.imshow(img_gray)
+
+
+# In[10]:
+
+
+img_gray = cv2.imread('../DATA/ai.jpg',cv2.IMREAD_GRAYSCALE)
+plt.imshow(img_gray,cmap='gray')
+
+
+# ## Resize Images
+
+# In[11]:
+
+
+img_rgb.shape
+# width, height, color channels
+
+
+# In[12]:
+
+
+img =cv2.resize(img_rgb,(1300,275))
+
+
+# In[13]:
+
+
+plt.imshow(img)
+
+
+# ### By ratio
+
+# In[14]:
+
+
+w_ratio = 0.5
+h_ratio = 0.5
+
+
+# In[15]:
+
+
+new_img =cv2.resize(img_rgb,(0,0),img,w_ratio,h_ratio)
+
+
+# In[16]:
+
+
+plt.imshow(new_img)
+
+
+# ### Flipping Images
+
+# In[19]:
+
+
+# Along central x axis
+new_img = cv2.flip(new_img,0)
+plt.imshow(new_img)
+
+
+# In[20]:
+
+
+# Along central y axis
+new_img = cv2.flip(new_img,1)
+plt.imshow(new_img)
+
+
+# In[21]:
+
+
+# Along both axis
+new_img = cv2.flip(new_img,-1)
+plt.imshow(new_img)
+
+
+# --------
+
+# # Saving Image Files
+
+# In[22]:
+
+
+type(new_img)
+
+
+# In[23]:
+
+
+cv2.imwrite('my_new_picture.jpg',new_img)
+
+
+# Keep in mind, the above stored the BGR version of the image.
+
+# ## Larger Displays in the Notebook
+
+# In[24]:
+
+
+fig = plt.figure(figsize=(10,8))
+ax = fig.add_subplot(111)
+ax.imshow(new_img)
+
+
+# In[ ]:
+
+
+
+
