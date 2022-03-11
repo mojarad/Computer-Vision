@@ -1,0 +1,92 @@
+
+# # Images and Numpy
+# 
+# Numpy can read in certain files types, this includes images stored as arrays. In this quick lecture, we'll quickly cover how you can work with images in NumPy. **Keep in mind, we will mainly be using OpenCV to open and view images, but later on in the Deep Learning Section we will come back to NumPy and Matplotlib. **
+
+# In[1]:
+
+
+import numpy as np
+
+
+# In[2]:
+
+
+import matplotlib.pyplot as plt
+get_ipython().run_line_magic('matplotlib', 'inline')
+
+
+# In[3]:
+
+
+from PIL import Image
+
+
+# In[4]:
+
+
+pic = Image.open('..\\DATA\\ai.jpg')
+
+
+# In[5]:
+
+
+pic
+
+
+# In[6]:
+
+
+type(pic)
+
+
+# In[7]:
+
+
+pic_arr = np.asarray(pic)
+
+
+# In[8]:
+
+
+pic_arr.shape
+
+
+# In[9]:
+
+
+plt.imshow(pic_arr)
+
+
+# In[10]:
+
+
+pic_original = pic_arr.copy()
+
+
+# In[11]:
+
+
+plt.imshow(pic_original)
+
+RGB
+012
+# In[12]:
+
+
+pic_original[ : , : , 1] = 0    # Zero out contribution from green
+plt.imshow(pic_original)
+
+
+# In[13]:
+
+
+pic_original[:, :, 2] = 0    # Zero out contribution from blue
+plt.imshow(pic_original)
+
+
+# In[14]:
+
+
+plt.imshow(pic_original)
+
