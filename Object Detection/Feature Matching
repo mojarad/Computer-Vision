@@ -1,0 +1,100 @@
+
+# # Feature Matching
+
+# In[2]:
+
+
+import cv2
+import numpy as np
+import matplotlib.pyplot as plt
+get_ipython().run_line_magic('matplotlib', 'inline')
+
+
+# In[3]:
+
+
+def display(img,cmap='gray'):
+    fig = plt.figure(figsize=(12,10))
+    ax = fig.add_subplot(111)
+    ax.imshow(img,cmap='gray')
+
+
+# In[4]:
+
+
+takhtejamshidcut = cv2.imread('../DATA/takhtejamshidcut.jpg',0)     
+
+
+# In[5]:
+
+
+display(takhtejamshidcut)
+
+
+# In[6]:
+
+
+takhtejamshid = cv2.imread('../DATA/takhtejamshid.jpg',0) 
+
+
+# In[7]:
+
+
+display(takhtejamshid)
+
+
+# --------
+# # Brute Force Detection with ORB Descriptors
+
+# In[12]:
+
+
+# Initiate ORB detector
+orb = cv2.ORB_create()
+
+# find the keypoints and descriptors with ORB
+kp1, des1 = orb.detectAndCompute(takhtejamshidcut,None)
+kp2, des2 = orb.detectAndCompute(takhtejamshid,None)
+
+# create BFMatcher object
+bf = cv2.BFMatcher(cv2.NORM_HAMMING, crossCheck=True)
+
+# Match descriptors.
+matches = bf.match(des1,des2)
+
+# Sort them in the order of their distance.
+matches = sorted(matches, key = lambda x:x.distance)
+
+# Draw first 25 matches.
+tj_matches = cv2.drawMatches(takhtejamshidcut,kp1,takhtejamshid,kp2,matches[:],None,flags=2)
+
+
+# In[26]:
+
+
+# matches
+
+
+# In[15]:
+
+
+len(matches)
+
+
+# In[24]:
+
+
+matches[224].distance
+
+
+# In[13]:
+
+
+display(tj_matches)
+
+
+# In[ ]:
+
+
+
+
