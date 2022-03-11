@@ -1,0 +1,80 @@
+# # Morphological Operators
+
+# In[10]:
+
+
+import cv2
+import numpy as np
+import matplotlib.pyplot as plt
+get_ipython().run_line_magic('matplotlib', 'inline')
+
+
+# In[11]:
+
+
+img = cv2.imread('../DATA/noisebg1.png',0)
+
+
+# In[12]:
+
+
+def display_img(img):
+    fig = plt.figure(figsize=(12,10))
+    ax = fig.add_subplot(111)
+    ax.imshow(img,cmap='gray')
+
+
+# In[13]:
+
+
+display_img(img)
+
+
+# In[19]:
+
+
+np.ones((10,10),np.uint8)
+
+
+# In[14]:
+
+
+kernel = np.ones((10,10),np.uint8)
+opening = cv2.morphologyEx(img, cv2.MORPH_OPEN, kernel)
+display_img(opening)
+
+
+# In[15]:
+
+
+img = cv2.imread('../DATA/noisefg.png',0)
+
+
+# In[16]:
+
+
+def display_img(img):
+    fig = plt.figure(figsize=(12,10))
+    ax = fig.add_subplot(111)
+    ax.imshow(img,cmap='gray')
+
+
+# In[17]:
+
+
+display_img(img)
+
+
+# In[18]:
+
+
+kernel = np.ones((10,10),np.uint8)
+closing = cv2.morphologyEx(img, cv2.MORPH_CLOSE, kernel)
+display_img(closing)
+
+
+# In[ ]:
+
+
+
+
